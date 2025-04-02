@@ -1,35 +1,23 @@
 package src.modelos;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Pedido {
-    private int id;
-    private NotaFiscal notaFiscal; 
-    private List<ItemCarrinho> itens;    
+    private Carrinho carrinho;
+    private NotaFiscal notaFiscal;
 
-    public Pedido(int id){
-        this.id = id; 
-        this.itens = new ArrayList<>();
-        this.notaFiscal = new NotaFiscal(this);
+    public Pedido(Carrinho carrinho) {
+        this.carrinho = carrinho;
+        this.notaFiscal = new NotaFiscal();
     }
 
-    public void adicionarItem(ItemCarrinho item){
-        this.itens.add(item);
-    }
-    public void gerarNotaFiscal(){
-        notaFiscal.emitirNota();
-    }
-    public void processarPagamento(Pagamento pagamento) {
-        pagamento.realizarPagamento();
+    public double getTotalPedido() {
+        return carrinho.calcularTotal();
     }
 
-
-    public int getId() {
-        return id;
+    public NotaFiscal getNotaFiscal() {
+        return notaFiscal;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void exibirPedido() {
+        notaFiscal.exibirNota();
+        System.out.println("Total pago: R$" + getTotalPedido());
     }
 }
