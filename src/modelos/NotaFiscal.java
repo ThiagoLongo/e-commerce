@@ -1,14 +1,24 @@
 package src.modelos;
 
-public class NotaFiscal {
-    private Pedido pedido;
+class NotaFiscal {
+    private int numero;
+    private static int contador = 1;
 
-    public NotaFiscal(Pedido pedido){
-        this.pedido = pedido; 
+    public NotaFiscal() {
+        this.numero = contador++;
     }
 
-    public void emitirNota(){
-        System.out.println("======= NOTA FISCAL =======");
-        System.out.println("Pedido ID: "+ pedido.getId());
+    public void exibirNota() {
+        System.out.println("Nota Fiscal Nº: " + numero);
+        
+    }
+
+    
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 }

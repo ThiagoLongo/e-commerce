@@ -1,7 +1,8 @@
 package src.Servicos;
 
 public class GatewayPagamento {
-    public void processarPagamento(double valor){
-        System.out.println("Pagamento processado");
+    public boolean processarPagamento(double valor) {
+        System.out.println("Processando pagamento de R$" + valor);
+        return true; // Simulando pagamento aprovado
     }
 }

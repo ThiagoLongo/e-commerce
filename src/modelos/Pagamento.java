@@ -3,15 +3,19 @@ package src.modelos;
 import src.Servicos.GatewayPagamento;
 
 public class Pagamento {
-    private double valor; 
     private GatewayPagamento gateway;
 
-    public Pagamento(double valor,GatewayPagamento gateway){
-        this.valor = valor;
+    public Pagamento(GatewayPagamento gateway) {
         this.gateway = gateway;
     }
 
-    public void realizarPagamento(){
-        gateway.processarPagamento(valor); 
+    public void processarPagamento(Pedido pedido) {
+        boolean sucesso = gateway.processarPagamento(pedido.getTotalPedido());
+        
+        if (sucesso) {
+            System.out.println("Pagamento realizado com sucesso!");
+        } else {
+            System.out.println("Falha no pagamento.");
+        }
     }
 }
